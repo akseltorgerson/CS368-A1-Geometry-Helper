@@ -49,7 +49,7 @@ float getInput() {
 
   if (cin.fail() || retVal <= 0) {
     cin.clear();
-    cin.ignore();
+    cin.ignore(numeric_limits<streamsize>::max(), '\n');
     cout << "Please enter a postive number." << endl;
     return 0.0;
   }
@@ -80,7 +80,8 @@ int main() {
     if (menuState == 1) {
       
       // Clear cin buffer for good looks :)
-      cin.ignore(INT_MAX);
+      cin.clear();
+      cin.ignore(numeric_limits<streamsize>::max(), '\n');
 
       printMainMenu();
       cin >> userSelect;
