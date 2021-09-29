@@ -78,6 +78,10 @@ int main() {
     // Main Menu
     ///
     if (menuState == 1) {
+      
+      // Clear cin buffer for good looks :)
+      cin.ignore(INT_MAX);
+
       printMainMenu();
       cin >> userSelect;
       if (strcmp(userSelect, "1") == 0) {
@@ -88,6 +92,7 @@ int main() {
         return 0;
       }
     } 
+
     //
     // 2D Menu
     //
@@ -113,6 +118,7 @@ int main() {
         cout << "The area of the circle is: " << ans << endl;
         cout << "Press enter to return to the menu." << endl;
         cin >> ans;
+        menuState = 1;
 
       } 
 
@@ -137,6 +143,7 @@ int main() {
         cout << "The area of the triangle is: " << ans << endl;
         cout << "Press enter to return to the menu." << endl;
         cin >> ans;
+        menuState = 1;
 
       } 
 
@@ -161,6 +168,7 @@ int main() {
         cout << "The area of the rectangle is: " << ans << endl;
         cout << "Press enter to return to the menu." << endl;
         cin >> ans;
+        menuState = 1;
 
       } 
 
