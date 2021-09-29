@@ -4,7 +4,7 @@
 using namespace std;
 
 float AreaOfCircle(const float& radius) {
-  return (M_PI * (radius^2));
+  return (M_PI * (pow(radius, 2)));
 }
 
 float AreaOfTriangle(const float& width, const float& height) {
@@ -16,11 +16,11 @@ float AreaOfRectangle(const float& width, const float& height) {
 }
 
 float VolumeOfSphere(const float& radius) {
-  return ((float)(4/3 * M_PI * (radius^3)));
+  return ((float)(4/3 * M_PI * (pow(radius, 3))));
 }
 
 float VolumeOfCone(const float& radius, const float& height) {
-  return ((1/3) * M_PI * (radius^2) * height);
+  return ((1/3) * M_PI * (pow(radius, 3)) * height);
 }
 
 float VolumeOfBox(const float& width, const float& height, const float& length) {
