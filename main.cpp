@@ -94,7 +94,9 @@ int main() {
     // 2D Menu
     //
     else if (menuState == 2) {
-      
+
+      userSelect = "";
+
       // Print menu
       print2dMenu();
       cin >> userSelect;
