@@ -15,7 +15,7 @@ void printMainMenu() {
   cout << "[1] Calculate a 2D area" << endl;
   cout << "[2] Calculate a 3D volume" << endl;
   cout << "[3] Exit" << endl;
-  cout << "Please enter a menu item: ";
+  cout << "Please enter a menu item: " ;
   return;
 }
 
@@ -25,7 +25,7 @@ void print2dMenu() {
   cout << "[2] Triangle" << endl;
   cout << "[3] Rectangle" << endl;
   cout << "[4] Return to main menu" << endl;
-  cout << "Please enter a menu item:";
+  cout << "Please enter a menu item:" ;
   return;
 }
 
@@ -37,6 +37,25 @@ void print3dMenu() {
   cout << "[4] Return to main menu" << endl;
   cout << "Please enter a menu item:";
   return;
+}
+
+//
+// Makes sure the user input is a positive float.
+//
+float getInput() {
+  
+  float retVal;
+  cin >> retVal;
+
+  if (retVal.fail() || retVal <= 0) {
+    cin.clear();
+    cin.ignore();
+    cout << "Please enter a postive number." << endl;
+    return 0.0;
+  }
+  
+  return retVal;
+
 }
 
 int main() {
@@ -51,6 +70,10 @@ int main() {
   // Main program loop.
   //
   while (1) {
+
+    //
+    // Main Menu
+    ///
     if (menuState == 1) {
       printMainMenu();
       cin >> userSelect;
@@ -61,13 +84,41 @@ int main() {
       } else if (strcmp(userSelect, "3") == 0) {
         return 0;
       }
-    } else if (menuState == 2) {
+    } 
+    //
+    // 2D Menu
+    //
+    else if (menuState == 2) {
+      
+      float ans, radius, width, height, length;
+      
       print2dMenu();
       cin >> userSelect;
-      if (strcmp(userSelect, "4") == 0) {
+      
+      if (strcmp(userSelect, "1") == 0) {
+        
+        // Get input.
+        do {
+          cout << "Please enter the radius: ";
+          radius = getInput();
+        } while (radius <= 0.0);
+        
+        // Print input.
+        ans = AreaOfCircle(radius);
+        cout << "The area of the circle is: " + ans << endl;
+        cout << "Press any key to return to menu." << endl;
+        cin >> ans;
+
+      } else if (strcmp(userSelect, "2") == 0) {
+      } else if (strcmp(userSelect, "3") == 0) { 
+      } else if (strcmp(userSelect, "4") == 0) {
         menuState = 1;
       }
-    } else if (menuState == 3) {
+    } 
+    //
+    // 3D Menu
+    //
+    else if (menuState == 3) {
       print3dMenu();
       cin >> userSelect;
       if (strcmp(userSelect, "4") == 0) {
