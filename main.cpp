@@ -71,6 +71,9 @@ int main() {
   //
   while (1) {
     
+    "0" >> userSelect;
+
+
     // Scope variables.
     float ans, radius, width, height, length;
 
@@ -94,8 +97,6 @@ int main() {
     // 2D Menu
     //
     else if (menuState == 2) {
-
-      userSelect = null;
 
       // Print menu
       print2dMenu();
