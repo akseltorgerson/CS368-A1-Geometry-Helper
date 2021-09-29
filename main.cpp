@@ -49,6 +49,7 @@ float getInput() {
 
   if (cin.fail() || retVal <= 0) {
     cin.clear();
+    cin.ignore();
     cout << "Please enter a postive number." << endl;
     return 0.0;
   }
