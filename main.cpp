@@ -48,8 +48,6 @@ float getInput() {
   cin >> retVal;
 
   if (cin.fail() || retVal <= 0) {
-    cin.clear();
-    cin.ignore();
     cout << "Please enter a postive number." << endl;
     return 0.0;
   }
@@ -70,6 +68,9 @@ int main() {
   // Main program loop.
   //
   while (1) {
+    
+    // Scope variables.
+    float ans, radius, width, height, length;
 
     //
     // Main Menu
@@ -90,11 +91,13 @@ int main() {
     //
     else if (menuState == 2) {
       
-      float ans, radius, width, height, length;
-      
+      // Print menu
       print2dMenu();
       cin >> userSelect;
       
+      //
+      // Circle
+      //
       if (strcmp(userSelect, "1") == 0) {
         
         // Get input.
@@ -106,15 +109,67 @@ int main() {
         // Print input.
         ans = AreaOfCircle(radius);
         cout << "The area of the circle is: " << ans << endl;
-        cout << "Press any key to return to menu." << endl;
+        cout << "Press enter to return to the menu." << endl;
         cin >> ans;
 
-      } else if (strcmp(userSelect, "2") == 0) {
-      } else if (strcmp(userSelect, "3") == 0) { 
-      } else if (strcmp(userSelect, "4") == 0) {
+      } 
+
+      //
+      // Triangle
+      //
+      else if (strcmp(userSelect, "2") == 0) {
+        
+        // Get input.
+        do {
+          cout << "Please enter the width: ";
+          width = getInput();
+        } while (width <= 0.0);
+
+        do {
+          cout << "Please enter the height: ";
+          width = getInput();
+        } while (height <= 0.0);
+
+        // Print input.
+        ans = AreaOfTriangle(width, height);
+        cout << "The area of the triangle is: " << ans << endl;
+        cout << "Press enter to return to the menu." << endl;
+        cin >> ans;
+
+      } 
+
+      //
+      // Rectangle
+      //
+      else if (strcmp(userSelect, "3") == 0) { 
+        
+        // Get input.
+        do {
+          cout << "Please enter the width: ";
+          width = getInput();
+        } while (width <= 0.0);
+
+        do {
+          cout << "Please enter the height: ";
+          width = getInput();
+        } while (height <= 0.0);
+
+        // Print input.
+        ans = AreaOfTriangle(width, height);
+        cout << "The area of the rectangle is: " << ans << endl;
+        cout << "Press enter to return to the menu." << endl;
+        cin >> ans;
+
+      } 
+
+      //
+      // Return to main menu.
+      //
+      else if (strcmp(userSelect, "4") == 0) {
         menuState = 1;
       }
     } 
+
     //
     // 3D Menu
     //
