@@ -2,7 +2,6 @@
 // atorgerson
 
 #include <iostream>
-#include <cstring>
 #include "functions.h"
 
 using namespace std;
@@ -47,10 +46,8 @@ float getInput() {
   float retVal;
   cin >> retVal;
 
-  if (cin.fail() || retVal <= 0) {
-    cin.clear();
-    cin.ignore(64);
-    cout << "Please enter a postive number." << endl;
+  if (retVal <= 0) {
+    cout << "Please enter a valid postive number." << endl;
     return 0.0;
   }
   
@@ -60,8 +57,9 @@ float getInput() {
 
 int main() {
 
-  // Creating arbitrarily long array for the input string.
-  char userSelect[64];
+  // Scope variables.
+  float ans, radius, width, height, length;
+  int userSelect;
   int menuState = 1;  // 1 for main menu
                       // 2 for 2d
                       // 3 for 3d
@@ -71,11 +69,7 @@ int main() {
   //
   while (1) {
     
-    "0" >> userSelect;
-
-
-    // Scope variables.
-    float ans, radius, width, height, length;
+    userSelect = 0;
 
     //
     // Main Menu
@@ -83,29 +77,31 @@ int main() {
     if (menuState == 1) {
 
       printMainMenu();
-      cin >> userSelect;
-      if (strcmp(userSelect, "1") == 0) {
+      userSelect = getInput();
+      if (userSelect == 1) {
         menuState = 2;
-      } else if (strcmp(userSelect, "2") == 0) {
+      } else if (userSelect == 2) {
         menuState = 3;
-      } else if (strcmp(userSelect, "3") == 0) {
+      } else if (userSelect == 3) {
         return 0;
+      } else {
+        cout << "Please enter a valid selection" << endl;
       }
-    } 
+    }
 
     //
     // 2D Menu
     //
     else if (menuState == 2) {
-
+      
       // Print menu
       print2dMenu();
-      cin >> userSelect;
+      userSelect = getInput();
       
       //
       // Circle
       //
-      if (strcmp(userSelect, "1") == 0) {
+      if (userSelect == 1) {
         
         // Get input.
         do {
@@ -118,14 +114,13 @@ int main() {
         cout << "The area of the circle is: " << ans << endl;
         cout << "Press enter to return to the menu." << endl;
         cin >> ans;
-        menuState = 1;
 
       } 
 
       //
       // Triangle
       //
-      else if (strcmp(userSelect, "2") == 0) {
+      else if (userSelect == 2) {
         
         // Get input.
         do {
@@ -135,7 +130,7 @@ int main() {
 
         do {
           cout << "Please enter the height: ";
-          width = getInput();
+          height = getInput();
         } while (height <= 0.0);
 
         // Print input.
@@ -143,14 +138,13 @@ int main() {
         cout << "The area of the triangle is: " << ans << endl;
         cout << "Press enter to return to the menu." << endl;
         cin >> ans;
-        menuState = 1;
 
       } 
 
       //
       // Rectangle
       //
-      else if (strcmp(userSelect, "3") == 0) { 
+      else if (userSelect == 3) { 
         
         // Get input.
         do {
@@ -160,38 +154,117 @@ int main() {
 
         do {
           cout << "Please enter the height: ";
-          width = getInput();
+          height = getInput();
         } while (height <= 0.0);
 
         // Print input.
-        ans = AreaOfTriangle(width, height);
+        ans = AreaOfRectangle(width, height);
         cout << "The area of the rectangle is: " << ans << endl;
         cout << "Press enter to return to the menu." << endl;
         cin >> ans;
-        menuState = 1;
 
       } 
 
       //
       // Return to main menu.
       //
-      else if (strcmp(userSelect, "4") == 0) {
+      else if (userSelect == 4) {
         menuState = 1;
       }
+
+      menuState = 1;
     } 
 
     //
     // 3D Menu
     //
     else if (menuState == 3) {
+      
+      // Print menu
       print3dMenu();
-      cin >> userSelect;
-      if (strcmp(userSelect, "4") == 0) {
+      userSelect = getInput();
+
+      //
+      // Sphere
+      //
+      if (userSelect == 1) {
+        
+        // Get input.
+        do {
+          cout << "Please enter the radius: ";
+          radius = getInput();
+        } while (radius <= 0.0);
+
+        // Print input.
+        ans = VolumeOfSphere(radius);
+        cout << "The volume of the sphere is: " << ans << endl;
+        cout << "Press enter to return to the menu." << endl;
+        cin >> ans;
+
+      } 
+
+      //
+      // Cone
+      //
+      else if (userSelect == 2) {
+        
+        // Get input.
+        do {
+          cout << "Please enter the radius: ";
+          radius = getInput();
+        } while (radius <= 0.0);
+
+        do {
+          cout << "Please enter the height: ";
+          height = getInput();
+        } while (height <= 0.0);
+
+        // Print input.
+        ans = VolumeOfCone(radius, height);
+        cout << "The volume of the cone is: " << ans << endl;
+        cout << "Press enter to return to the menu." << endl;
+        cin >> ans;
+
+      } 
+
+      //
+      // Box
+      //
+      else if (userSelect == 3) {
+        
+        // Get input.
+        do {
+          cout << "Please enter the width: ";
+          width = getInput();
+        } while (width <= 0.0);
+
+        do {
+          cout << "Please enter the height: ";
+          height = getInput();
+        } while (height <= 0.0);
+
+        do {
+          cout << "Please enter the length: ";
+          length = getInput();
+        } while (length <= 0.0);
+
+        // Print input.
+        ans = VolumeOfBox(width, height, length);
+        cout << "The volume of the box is: " << ans << endl;
+        cout << "Press enter to return to the menu." << endl;
+        cin >> ans;
+
+      } 
+
+      //
+      // Return to main menu.
+      // 
+      else if (userSelect == 4) {
         menuState = 1;
       }
-    } else {
+
       menuState = 1;
-    }
+    }  
   }
   return 0;
 }
