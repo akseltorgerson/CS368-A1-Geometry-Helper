@@ -78,10 +78,6 @@ int main() {
     // Main Menu
     ///
     if (menuState == 1) {
-      
-      // Clear cin buffer for good looks :)
-      cin.clear();
-      cin.ignore(64);
 
       printMainMenu();
       cin >> userSelect;
