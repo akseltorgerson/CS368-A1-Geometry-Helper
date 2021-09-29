@@ -95,7 +95,7 @@ int main() {
     //
     else if (menuState == 2) {
 
-      userSelect = "";
+      userSelect = null;
 
       // Print menu
       print2dMenu();
