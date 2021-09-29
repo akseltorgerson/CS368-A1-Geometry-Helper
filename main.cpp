@@ -47,7 +47,7 @@ float getInput() {
   float retVal;
   cin >> retVal;
 
-  if (retVal.fail() || retVal <= 0) {
+  if (cin.fail() || retVal <= 0) {
     cin.clear();
     cin.ignore();
     cout << "Please enter a postive number." << endl;
@@ -105,7 +105,7 @@ int main() {
         
         // Print input.
         ans = AreaOfCircle(radius);
-        cout << "The area of the circle is: " + ans << endl;
+        cout << "The area of the circle is: " << ans << endl;
         cout << "Press any key to return to menu." << endl;
         cin >> ans;
 
