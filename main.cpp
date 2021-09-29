@@ -15,7 +15,7 @@ void printMainMenu() {
   cout << "[1] Calculate a 2D area" << endl;
   cout << "[2] Calculate a 3D volume" << endl;
   cout << "[3] Exit" << endl;
-  cout << "Please enter a menu item: " ;
+  cout << "Please enter a menu item: ";
   return;
 }
 
@@ -25,7 +25,7 @@ void print2dMenu() {
   cout << "[2] Triangle" << endl;
   cout << "[3] Rectangle" << endl;
   cout << "[4] Return to main menu" << endl;
-  cout << "Please enter a menu item:" ;
+  cout << "Please enter a menu item: ";
   return;
 }
 
@@ -35,7 +35,7 @@ void print3dMenu() {
   cout << "[2] Cone" << endl;
   cout << "[3] Box" << endl;
   cout << "[4] Return to main menu" << endl;
-  cout << "Please enter a menu item:";
+  cout << "Please enter a menu item: ";
   return;
 }
 
@@ -48,6 +48,7 @@ float getInput() {
   cin >> retVal;
 
   if (cin.fail() || retVal <= 0) {
+    cin.clear();
     cout << "Please enter a postive number." << endl;
     return 0.0;
   }
