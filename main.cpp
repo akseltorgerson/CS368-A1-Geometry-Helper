@@ -41,7 +41,8 @@ void print3dMenu() {
 
 int main() {
 
-  char userSelect[1];
+  // Creating arbitrarily long array for the input string.
+  char userSelect[64];
   int menuState = 1;  // 1 for main menu
                       // 2 for 2d
                       // 3 for 3d
